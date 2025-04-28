@@ -1,15 +1,21 @@
 import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
+import "./Task.css"
 
-const Task = ({ task, toggleTask, id, removeTask, created, editingTask, status, editTask }) => {
-  const [editText, setEditText] = React.useState('')
+const Task = ({ task,min,sec, toggleTask, startTimer,id,endTimer, removeTask, created, editingTask, status, editTask }) => {
+  const [editText, setEditText] = React.useState(`${task}`)
   if (status === 'active' || status === 'completed') {
     return (
       <div className="view">
         <input className={'toggle'} type="checkbox" onChange={() => toggleTask(id)} />
         <label>
-          <span className="description">{task}</span>
-          <span className="created">created {formatDistanceToNow(created)}</span>
+          <span className="title">{task}</span>
+            <span className="description">
+                <button className={"icon icon-play"} onClick={()=>startTimer(id)}/>
+                <button className={"icon icon-pause"} onClick={()=>endTimer(id)}/>
+                {min}:{sec}
+            </span>
+          <span className="description">created {formatDistanceToNow(created)}</span>
         </label>
         <button
           className={'icon icon-edit'}
@@ -21,7 +27,9 @@ const Task = ({ task, toggleTask, id, removeTask, created, editingTask, status, 
       </div>
     )
   }
+
   if (status === 'editing') {
+
     const submit = (event) => {
       event.preventDefault()
       if (editText.trim()) {
