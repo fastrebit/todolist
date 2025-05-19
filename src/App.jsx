@@ -46,7 +46,7 @@ function App() {
       setTasks((prevTasks) =>
         prevTasks.map((task) => {
           if (task.id === id) {
-            if(Number(task.min) === 0 && Number(task.sec)  === 0) {
+            if (Number(task.min) === 0 && Number(task.sec) === 0) {
               clearInterval(intervalId)
               setIntervals((prev) => {
                 const updated = { ...prev }

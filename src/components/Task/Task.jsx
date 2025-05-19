@@ -26,7 +26,7 @@ const Task = ({
           <span className="description">
             <button className={'icon icon-play'} onClick={() => startTimer(id)} />
             <button className={'icon icon-pause'} onClick={() => endTimer(id)} />
-            {min < 10 ? `0${min}`: min}:{sec < 10 ? `0${sec}`: sec}
+            {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
           </span>
           <span className="description">created {formatDistanceToNow(created)}</span>
         </label>
