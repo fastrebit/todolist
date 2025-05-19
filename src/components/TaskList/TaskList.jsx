@@ -2,7 +2,7 @@ import React from 'react'
 import './TaskList.css'
 import Task from '../Task/Task.jsx'
 
-const TaskList = ({ tasks, startTimer,toggleTask,endTimer, removeTask, createNewTask, editingTask, editTask }) => {
+const TaskList = ({ tasks, startTimer, toggleTask, endTimer, removeTask, createNewTask, editingTask, editTask }) => {
   return (
     <ul className="todo-list">
       {tasks.map((item) => {
@@ -20,8 +20,8 @@ const TaskList = ({ tasks, startTimer,toggleTask,endTimer, removeTask, createNew
               editTask={editTask}
               min={item.min}
               sec={item.sec}
-              startTimer ={startTimer}
-              endTimer ={endTimer}
+              startTimer={startTimer}
+              endTimer={endTimer}
             />
           </li>
         )

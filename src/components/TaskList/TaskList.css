@@ -69,7 +69,9 @@
   justify-content: space-between;
   padding: 15px 85px 15px 60px;
 }
-
+.todo-list li span {
+  width: 140px;
+}
 .todo-list li .view {
   position: relative;
 }

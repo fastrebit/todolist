@@ -1,8 +1,21 @@
 import React from 'react'
 import { formatDistanceToNow } from 'date-fns'
-import "./Task.css"
+import './Task.css'
 
-const Task = ({ task,min,sec, toggleTask, startTimer,id,endTimer, removeTask, created, editingTask, status, editTask }) => {
+const Task = ({
+  task,
+  min,
+  sec,
+  toggleTask,
+  startTimer,
+  id,
+  endTimer,
+  removeTask,
+  created,
+  editingTask,
+  status,
+  editTask,
+}) => {
   const [editText, setEditText] = React.useState(`${task}`)
   if (status === 'active' || status === 'completed') {
     return (
@@ -10,11 +23,11 @@ const Task = ({ task,min,sec, toggleTask, startTimer,id,endTimer, removeTask, cr
         <input className={'toggle'} type="checkbox" onChange={() => toggleTask(id)} />
         <label>
           <span className="title">{task}</span>
-            <span className="description">
-                <button className={"icon icon-play"} onClick={()=>startTimer(id)}/>
-                <button className={"icon icon-pause"} onClick={()=>endTimer(id)}/>
-                {min}:{sec}
-            </span>
+          <span className="description">
+            <button className={'icon icon-play'} onClick={() => startTimer(id)} />
+            <button className={'icon icon-pause'} onClick={() => endTimer(id)} />
+            {min < 10 ? `0${min}`: min}:{sec < 10 ? `0${sec}`: sec}
+          </span>
           <span className="description">created {formatDistanceToNow(created)}</span>
         </label>
         <button
@@ -29,7 +42,6 @@ const Task = ({ task,min,sec, toggleTask, startTimer,id,endTimer, removeTask, cr
   }
 
   if (status === 'editing') {
-
     const submit = (event) => {
       event.preventDefault()
       if (editText.trim()) {
